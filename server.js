@@ -33,6 +33,16 @@ app.use(express.json())
 //     res.redirect('/restrooms/new')
 // })
 
+//--- all restrooms 
+app.get('/restrooms', (req, res) => {
+    Restroom.find()
+    .then(restrooms => res.render('restrooms', { restrooms }))
+    .catch(err => {
+        console.log(err.message)
+        res.status(500).send('Something went wrong')
+    })
+})
+
 //---- empty form
 app.get('/restrooms/new', (req, res) => {
     res.render('new')
@@ -60,7 +70,7 @@ app.get('/restrooms/:id', (req, res) => {
             if (!restroom) {
                 return res.redirect('/restrooms/new')
             }
-            res.render('show', { restroom })
+            res.render('showOne', { restroom })
         })
         .catch(err => {
             console.log(err.message)

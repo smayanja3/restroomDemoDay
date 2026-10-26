@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css.style.css">
+    <title>Browse Restrooms</title>
+</head>
+<body>
+<header>
+    <h2 class="logo">Got2Go</h2>
+    <nav>
+        <ul>
+            <!-- <li><a href="/profile"> Profile</a></li> -->
+            <li><a href="/restrooms">Browse</a></li>
+            <li><a href="/restrooms/new">Add a Restroom</a></li>
+            <!-- <li><a href="/logout"> Sign Out</a></li> -->
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>All Restrooms</h1>
+
+   <% if(restrooms.length === 0) { %>
+        <p>No restrooms yet. <a href="/restrooms/new">Add a restroom </a></p>
+   <% } %>
+
+   <ul>
+    <% restrooms.forEach(restroom => { %>
+         <li>
+            <a href="/restrooms/<%= restroom._id %>"><%= restroom.name %></a>
+            <%= restroom.address %>
+             <%= restroom.isFree ? 'Free' : '' %>
+              <%= restroom.is24Hours ? '24 Hours' : '' %>
+         </li>
+  <%  }) %>
+   
+   </ul>
+
+</main>
+
+</body>
+
+</html>

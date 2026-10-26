@@ -9,18 +9,19 @@
         <%= restroom.name %>
     </title>
 </head>
+<body>
 <header>
         <h2 class="logo">Got2Go</h2>
         <nav>
             <ul>
                 <!-- <li><a href="/profile"> Profile</a></li> -->
-                <li><a href="">Browse</a></li>
+                  <li><a href="/restrooms">Browse</a></li>
                 <li><a href="/restrooms/new">Add a Restroom</a></li>
             </ul>
         </nav>
     </header>
 
-<body>
+<main>
      <h1>Add a Restroom</h1>
 
    <form id="editF" data-id="<%= restroom._id %>">
@@ -45,6 +46,7 @@
         <button type="submit">Save Changes</button>
         <a href="/restrooms/<%= restroom._id %>">Cancel</a>
     </form>
+    </main>
 </body>
 <script src="/js/main.js"></script>
 

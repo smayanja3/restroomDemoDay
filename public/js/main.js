@@ -26,7 +26,7 @@ if(editForm) {
         })
         .catch(err => console.log(err))
     })
-}
+} 
 
 
 
@@ -34,11 +34,13 @@ if(editForm) {
 //---- delete button on the show page
 
 if(deleteBtn) {
-    deleteBtn.addEventListener('submit', () => {
-
+    deleteBtn.addEventListener('click', () => {
         const id = deleteBtn.dataset.id
+        const sure = confirm('Delete this restroom')
+
+        if (!sure) return
         
-        fetch(`restrooms/${id}`, {
+        fetch(`/restrooms/${id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
