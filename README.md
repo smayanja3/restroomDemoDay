@@ -8,8 +8,6 @@ Find a clean, restroom nearby — fast.
  
 Restroom Finder helps people quickly locate public restrooms near them. The goal is to let users search an area, see restrooms on a list or map, and check details like whether it's free, and if a changing table is available.
  
-Right now the project is in its beginning stages. The core idea and basic setup are in place, and I'm building it out one feature at a time.
- 
 ---
  
 ## ✅ Current Features
@@ -40,9 +38,3 @@ Node.js · Express · MongoDB · Mongoose · EJS
 - Structuring an Express app so it's easy to grow
 - Working with location data
 - Shipping an early version and improving it over time
-
----
-
-## 🙌 Feedback
- 
-This project is still growing. If you have ideas or spot a bug, feel free to open an issue!
