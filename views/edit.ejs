@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css.style.css">
+    <title>
+        <%= restroom.name %>
+    </title>
+</head>
+
+<body>
+     <h1>Add a Restroom</h1>
+
+    <form id="editForm">
+
+        <p>
+            <label for="name">Location Name</label>
+            <input type="text" id="name" name="name" value="<%= restrooms.name %>" required>
+        </p>
+
+        <p>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" value="<%= restrooms.address %>" required>
+        </p>
+
+        <p>
+            <label><input type="checkbox" name="isFree" <%= restrooms.isFree ? 'checked' : '' %>>Free to use</label>
+        </p>
+
+        <p>
+            <label><input type="checkbox" name="is24Hours" <%= restrooms.is24Hours ? 'checked' : '' %>>Open 24 hours</label>
+        </p>
+        <button type="submit">Add Restroom</button>
+        <a href="/restrooms/<%= restroom._id %>">Cancel</a>
+    </form>
+</body>
+<script src="/js/main.js"></script>
+
+</html>

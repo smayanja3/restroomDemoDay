@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css.style.css">
+    <title><%= restroom.name %></title>
+</head>
+<body>
+    <h1><%= restroom.name %></h1>
+    <p>Adress: <%= restroom.address %></p>
+    <p>Free: <%= restroom.isFree ? 'Yes' : 'No' %></p>
+    <p>Open 24 hours: <%= restroom.is24Hours ? 'Yes' : 'No' %></p>
+    <a href="/restrooms/edit/<%= restrooms._id %>">Edit</a>
+    <button type="button" id="danger">Delete</button>
+    <a href="/restrooms/new">Add another restroom</a>
+</body>
+<script src="/js/main.js"></script>
+</html>
