@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a Restroomt</title>
 </head>
-<body>
-    <header>
 
-    </header>
-    
-    <main></main>
+<body>
+    <h1>Add a Restroom</h1>
+
+    <form action="/restrooms" method="POST">
+
+        <p>
+            <label for="name">Location Name</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+
+        <p>
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+        </p>
+
+        <p>
+            <label><input type="checkbox" name="isFree" value="true">Free to use</label>
+        </p>
+
+        <p>
+            <label><input type="checkbox" name="is24Hours" value="true">Open 24 hours</label>
+        </p>
+        <button type="submit">Add Restroom</button>
+    </form>
 </body>
+
 </html>
