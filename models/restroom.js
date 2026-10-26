@@ -7,4 +7,4 @@ const restroomSchema = new mongoose.Schema({
     is24Hours: { type: String, default: false },
 }, { timestamps: true })
 
-module.export = mongoose.model('Restroom', restroomSchema)
+module.exports = mongoose.model('Restroom', restroomSchema)

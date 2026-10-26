@@ -1,11 +1,11 @@
-const editForm = document.querySelector('#editForm')
+const editForm = document.querySelector('#editF')
 const deleteBtn = document.querySelector('#danger')
 
 // PUT ======================================================================
 //---- edit form on the edit page
 if(editForm) {
-    editForm.addEventListener('submit',function(event) {
-        event.preventDefault()
+    editForm.addEventListener('submit',(e) => {
+        e.preventDefault()
 
         const id = editForm.dataset.id
 

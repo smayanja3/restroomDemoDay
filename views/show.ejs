@@ -6,12 +6,23 @@
     <link rel="stylesheet" href="/css.style.css">
     <title><%= restroom.name %></title>
 </head>
+<header>
+        <h2 class="logo">Got2Go</h2>
+        <nav>
+            <ul>
+                <!-- <li><a href="/profile"> Profile</a></li> -->
+                <li><a href="">Browse</a></li>
+                <li><a href="/restrooms/new">Add a Restroom</a></li>
+                <!-- <li><a href="/logout"> Sign Out</a></li> -->
+            </ul>
+        </nav>
+    </header>
 <body>
     <h1><%= restroom.name %></h1>
     <p>Adress: <%= restroom.address %></p>
     <p>Free: <%= restroom.isFree ? 'Yes' : 'No' %></p>
     <p>Open 24 hours: <%= restroom.is24Hours ? 'Yes' : 'No' %></p>
-    <a href="/restrooms/edit/<%= restrooms._id %>">Edit</a>
+    <a href="/restrooms/edit/<%= restroom._id %>">Edit</a>
     <button type="button" id="danger">Delete</button>
     <a href="/restrooms/new">Add another restroom</a>
 </body>
