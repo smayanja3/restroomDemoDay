@@ -16,13 +16,14 @@ if(editForm) {
                 name: document.getElementById('name').value,
                 address: document.getElementById('address').value,
                 isFree: document.getElementById('isFree').checked,
-                is24Hours: document.getElementById('is24Hours').checked
+                is24Hours: document.getElementById('is24Hours').checked,
+                hours: document.getElementById('hours').value,
             }),
         })
         .then(res => res.json())
         .then(data => {
-            consol.log(data)
-            window.location.href = `/restrooms/${id}`
+            console.log(data)
+            window.location.href = '/restrooms'
         })
         .catch(err => console.log(err))
     })
