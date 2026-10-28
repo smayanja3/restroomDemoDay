@@ -1,95 +1,28 @@
 const express = require('express')
 const router = express.Router()
 const Restroom = require('../models/restroom')
+//--- allows restrooms to exisit in the routes file -> from controllers file
+const restrooms = require('../controllers/restrooms')
 
-
+// GET =================================
 //--- all restrooms 
-router.get('/', (req, res) => {
-    Restroom.find()
-    .then(restrooms => res.render('restrooms', { restrooms }))
-    .catch(err => {
-        console.log(err.message)
-        res.status(500).send('Something went wrong')
-    })
-})
-
+router.get('/', restrooms.index)
 //---- empty form
-router.get('/new', (req, res) => {
-    res.render('new')
-})
-
-
+router.get('/new', restrooms.newForm)
 //------ filled out form
-router.get('/edit/:id', (req, res) => {
-    Restroom.findById(req.params.id)
-        .then(restroom => {
-            if (!restroom) {
-                return res.redirect('/restrooms/new')
-            }
-            res.render('edit', { restroom })
-        })
-        .catch(err => {
-            console.log(err.message)
-            res.redirect('/restrooms/new')
-        })
-})
-
+router.get('/edit/:id', restrooms.editForm)
 //---- one restroom page
-router.get('/:id', (req, res) => {
-    Restroom.findById(req.params.id)
-        .then(restroom => {
-            if (!restroom) {
-                return res.redirect('/restrooms/new')
-            }
-            res.render('showOne', { restroom })
-        })
-        .catch(err => {
-            console.log(err.message)
-            res.redirect('/restrooms/new')
-        })
-})
+router.get('/:id', restrooms.show)
 
-// POST======================================================================
+// POST=================================
 //---- adding a new restroom
-router.post('/', (req, res) => {
-    console.log(req.body)
-    Restroom.create(req.body)
-    .then(restroom => {
-        res.redirect(`/restrooms/${restroom._id}`)
-    })
-    .catch(err => {
-        console.log(err.message)
-        res.redirect('/restrooms/new')
-    })
-})
+router.post('/', restrooms.create)
 
-
-// PUT ======================================================================
+// PUT =================================
 //--- edited Run
-router.put('/:id', (req, res) => {
-    console.log('Put to body:', req.body)
-    Restroom.findByIdAndUpdate(req.params.id, req.body, { runValidators: true })
+router.put('/:id', restrooms.update)
 
-        .then(() => {
-            res.json({ message: 'Updated' })
-        })
-        .catch(err => {
-            console.log(err.message)
-            res.status(400).json({ error: err.message })
-        })
-})
-
-
-// DELETE ===================================================================
-router.delete('/:id', (req, res) => {
-    console.log('Deleted Restroom:', req.params.id)
-    Restroom.findByIdAndDelete(req.params.id)
-        .then(() => {
-            res.json({ message: 'Deleted' })
-        })
-        .catch(err => {
-            res.status(400).json({ error: err.message })
-        })
-})
+// DELETE ==============================
+router.delete('/:id', restrooms.destroy)
 
 module.exports = router
