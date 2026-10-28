@@ -29,9 +29,9 @@ app.use(express.json())
 
 // GET ======================================================================
 //---- will be the landing page but now add form
-// app.get('/', (req, res) => {
-//     res.redirect('/restrooms/new')
-// })
+app.get('/', (req, res) => {
+    res.redirect('/restrooms/new')
+})
 
 //--- all restrooms 
 app.get('/restrooms', (req, res) => {
