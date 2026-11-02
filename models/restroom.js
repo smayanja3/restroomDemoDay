@@ -15,7 +15,15 @@ const restroomSchema = new mongoose.Schema({
     },
     isFree: { type: Boolean, default: false },
     is24Hours: { type: Boolean, default: false },
-    hours: { type: String, default: '' }
+    hours: { type: String, default: '' },
+    neighborhood: { type:String, trim: true, maxLength:60 },
+    babyChanging: { type: Boolean, default: false},
+    cleanliness: {
+        type: Number,
+        min: [1, 'Cleanliness is 1 to 5'],
+        max: [5, 'Cleanliness is 1 to 5'],
+    },
+    notes: { type: String, trim: true, maxLength: [1000, 'Notes must be 1000 characters or less']},
 }, { timestamps: true })
 
 module.exports = mongoose.model('Restroom', restroomSchema)
