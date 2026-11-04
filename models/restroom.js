@@ -19,4 +19,9 @@ const restroomSchema = new mongoose.Schema({
     babyChanging: { type: Boolean, default: false},
 }, { timestamps: true })
 
+//google maps directions
+//Strings should be URL-encoded, so an address such as "City Hall, New York, NY" should be converted to City+Hall%2C+New+York%2C+NY 
+restroomSchema.virtual('mapsUrl').get(function () {
+    return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(this.address)}`
+})
 module.exports = mongoose.model('Restroom', restroomSchema)

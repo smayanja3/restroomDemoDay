@@ -29,6 +29,7 @@
         </h1>
         <p>Adress: <%= restroom.address %>
         </p>
+        <a href="<%= restroom.mapUrl %>" target="_blank">Get directions</a>
         <p>Free: <%= restroom.isFree ? 'Yes' : 'No' %>
         </p>
         <p>Hours: <%= restroom.is24Hours ? 'Open 24 hours' : restroom.hours %>
