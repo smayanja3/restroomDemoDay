@@ -15,6 +15,10 @@ module.exports = {
     newForm: (req, res) => {
         res.render('new')
     },
+// no async because this map doesnt talk to the mongoDB the db same as newForm ^^^
+    map: (req, res) => {
+        res.render('map')
+    },
 
     editForm: async (req, res) => {
         try {
