@@ -10,7 +10,7 @@ router.get('/', restrooms.index)
 //---- empty form
 router.get('/new', restrooms.newForm)
 //---- map page ???? <- lets see how it look might change
-router.get('map', restrooms.map)
+router.get('/map', restrooms.map)
 //------ filled out form
 router.get('/edit/:id', restrooms.editForm)
 //---- one restroom page
