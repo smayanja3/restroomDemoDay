@@ -19,7 +19,7 @@ const restroomSchema = new mongoose.Schema({
     babyChanging: { type: Boolean },
     lat: { type: Number },
     lng: { type: Number },
-    externalId: { type: Number, unique: true, sparse: true }, // id from RAPID API
+    externalId: { type: Number, unique: true, sparse: true }, // id from Refudge API
 },
     { timestamps: true })
 

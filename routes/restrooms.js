@@ -7,8 +7,6 @@ const restrooms = require('../controllers/restrooms')
 // GET =================================
 //--- all restrooms 
 router.get('/', restrooms.index)
-//---- empty form
-router.get('/new', restrooms.newForm)
 //---- hide api key from view 
 router.get('/map', restrooms.map)
 //------ filled out form
@@ -17,8 +15,6 @@ router.get('/edit/:id', restrooms.editForm)
 router.get('/:id', restrooms.show)
 
 // POST=================================
-//---- adding a new restroom
-router.post('/', restrooms.create)
 
 // PUT =================================
 //--- edited Run
