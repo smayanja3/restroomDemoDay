@@ -16,8 +16,9 @@ module.exports = {
         res.render('new')
     },
 // no async because this map doesnt talk to the mongoDB the db same as newForm ^^^
+// add boston as home location figure out in map.js or else where....
     map: (req, res) => {
-        res.render('map')
+         res.render('map', {apiKey: process.env.GOOGLE_MAPS_API_KEY})
     },
 
     editForm: async (req, res) => {
