@@ -12,9 +12,9 @@ module.exports = {
         }
     },
 
-    newForm: (req, res) => {
-        res.render('new')
-    },
+    // newForm: (req, res) => {
+    //     res.render('new')
+    // },
 // no async because this map doesnt talk to the mongoDB the db same as newForm ^^^
 // add boston as home location figure out in map.js or else where....
     map: (req, res) => {
@@ -25,12 +25,12 @@ module.exports = {
         try {
             const restroom = await Restroom.findById(req.params.id)
             if (!restroom) {
-                return res.redirect('/restrooms/new')
+                return res.redirect('/restrooms')
             }
             res.render('edit', { restroom })
         } catch (err) {
             console.log(err.message)
-            res.redirect('/restrooms/new')
+            res.redirect('/restrooms')
         }
     },
 
@@ -38,26 +38,26 @@ module.exports = {
         try {
             const restroom = await Restroom.findById(req.params.id)
             if (!restroom) {
-                return res.redirect('/restrooms/new')
+                return res.redirect('/restrooms')
             }
             res.render('showOne', { restroom })
         } catch (err) {
             console.log(err.message)
-            res.redirect('/restrooms/new')
+            res.redirect('/restrooms')
         }
     },
 
-    create: async (req, res) => {
-        try {
-            console.log(req.body)
-            const restroom = await Restroom.create(req.body)
-            res.redirect(`/restrooms/${restroom._id}`)
-        }
-        catch (err) {
-            console.log(err.message)
-            res.redirect('/restrooms/new')
-        }
-    },
+    // create: async (req, res) => {
+    //     try {
+    //         console.log(req.body)
+    //         const restroom = await Restroom.create(req.body)
+    //         res.redirect(`/restrooms/${restroom._id}`)
+    //     }
+    //     catch (err) {
+    //         console.log(err.message)
+    //         res.redirect('/restrooms')
+    //     }
+    // },
 
     update: async (req, res) => {
         try {
@@ -70,13 +70,15 @@ module.exports = {
         }
     },
     // delete is a reversed word in js so we use destroy instead
-    destroy: async (req, res) => {
-        try {
-            console.log('Deleted Restroom:', req.params.id)
-            await Restroom.findByIdAndDelete(req.params.id)
-            res.json({ message: 'Deleted' })
-        } catch (err){
-            res.status(400).json({ error: err.message })
-        }
-    },
+    // destroy: async (req, res) => {
+    //     try {
+    //         console.log('Deleted Restroom:', req.params.id)
+    //         await Restroom.findByIdAndDelete(req.params.id)
+    //         res.json({ message: 'Deleted' })
+    //     } catch (err){
+    //         res.status(400).json({ error: err.message })
+    //     }
+    // },
 }
+
+// removed destroy -> create -> new because they are NA but will use later for comments so i didnt delte them for now

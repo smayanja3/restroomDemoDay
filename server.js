@@ -20,7 +20,7 @@ app.locals.apiKey = process.env.GOOGLE_MAPS_API_KEY
 // GET ======================================================================
 //---- will be the landing page but now add form
 app.get('/', (req, res) => {
-    res.redirect('/restrooms/new')
+    res.redirect('/restrooms/map')
 })
 // //---- hide api key from view 
 // app.get('/map', (req, res) => {

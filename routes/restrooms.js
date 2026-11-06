@@ -25,6 +25,6 @@ router.post('/', restrooms.create)
 router.put('/:id', restrooms.update)
 
 // DELETE ==============================
-router.delete('/:id', restrooms.destroy)
+//router.delete('/:id', restrooms.destroy)
 
 module.exports = router

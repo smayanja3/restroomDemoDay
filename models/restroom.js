@@ -9,15 +9,19 @@ const restroomSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: true,
+        required: [true, 'Adress is required'],
         trim: true,
         maxLength: [200, 'Address must be 200 characters or less']
     },
-    isFree: { type: Boolean, default: false },
-    is24Hours: { type: Boolean, default: false },
+    isFree: { type: Boolean },
+    is24Hours: { type: Boolean },
     hours: { type: String, default: '' },
-    babyChanging: { type: Boolean, default: false},
-}, { timestamps: true })
+    babyChanging: { type: Boolean },
+    lat: { type: Number },
+    lng: { type: Number },
+    externalId: { type: Number, unique: true, sparse: true }, // id from RAPID API
+},
+    { timestamps: true })
 
 //google maps directions
 //Strings should be URL-encoded, so an address such as "City Hall, New York, NY" should be converted to City+Hall%2C+New+York%2C+NY 

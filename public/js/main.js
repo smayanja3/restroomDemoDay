@@ -1,5 +1,4 @@
 const editForm = document.querySelector('#editF')
-const deleteBtn = document.querySelector('#danger')
 
 // PUT ======================================================================
 //---- edit form on the edit page
@@ -32,24 +31,4 @@ if(editForm) {
 
 
 // DELETE ===================================================================
-//---- delete button on the show page
-
-if(deleteBtn) {
-    deleteBtn.addEventListener('click', () => {
-        const id = deleteBtn.dataset.id
-        const sure = confirm('Delete this restroom')
-
-        if (!sure) return
-        
-        fetch(`/restrooms/${id}`, {
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            window.location.href = '/restrooms/new'
-        })
-        .catch(err => console.log(err))
-    })
-       
-}
+//---- 
