@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 // })
 
 app.use('/restrooms', require('./routes/restrooms'))
+app.use('/api', require('./routes/api'))
 
 
 app.listen(PORT, () => {

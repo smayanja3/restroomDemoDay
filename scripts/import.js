@@ -57,3 +57,10 @@ importRestrooms().catch(err => {
     console.log(`Import failed, ${err.message}`)
     process.exit(1) // <--- something went wrong
 })
+
+/* 
+Town	LAT	LNG
+Waltham	42.3765	-71.2356
+Newton	42.3370	-71.2092
+Burlington	42.5048	-71.1956
+*/
