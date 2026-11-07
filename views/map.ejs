@@ -1,30 +1,26 @@
 <html>
-  <head>
-    <title>Add a Map using HTML</title>
 
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
-      <gmp-map
-      center="42.3601,-71.0589"
-      zoom="13" 
-      map-id="DEMO_MAP_ID"
-      style="height: vh"
-    >
-    </gmp-map>
-    <!-- center is the drop location (currently Boston)
+<head>
+  <title>Add a Map using HTML</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <gmp-map center="42.3601,-71.0589" zoom="13" map-id="DEMO_MAP_ID" style="height: vh">
+  </gmp-map>
+  <!-- center is the drop location (currently Boston)
     zoom is how close in you want to be... 4 = continent // 11 city///
     13 neighborhood // 16 street
     -->
 
-    <!--
+  <!--
       The `defer` attribute causes the script to execute after the full HTML
       document has been parsed. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps"
-      defer
-    ></script>
-  </body>
+  <!-- libraries=map //-> starts loading the maps library on page load but the map.js addPins loads all thge toos i can use InfoWindow -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps,marker"
+    defer></script>
+  <script src="/js/map.js" defer></script>
+</body>
+
 </html>
-  
