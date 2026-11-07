@@ -15,18 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.locals.apiKey = process.env.GOOGLE_MAPS_API_KEY
 
-
-
-// GET ======================================================================
-//---- will be the landing page but now add form
-app.get('/', (req, res) => {
-    res.redirect('/restrooms/map')
-})
-// //---- hide api key from view 
-// app.get('/map', (req, res) => {
-//     res.render('map', {apiKey: process.env.GOOGLE_MAPS_API_KEY})
-// })
-
+app.use('/', require('./routes/landing')) 
 app.use('/restrooms', require('./routes/restrooms'))
 app.use('/api', require('./routes/api'))
 
