@@ -1,4 +1,24 @@
 
+//build the popup box for the restroom
+// must use texContent !== textHTML
+
+// will add ratings -> hours -> cleanliness
+function makePopup(restroom){
+    const box = document.createElement('div')
+
+    const name = document.createElement('span')
+    name.textContent = restroom.name
+
+    const address = document.createElement('p')
+    address.textContent = restroom.address
+
+    const link = document.createElement('a')
+    link.href = `/restrooms/${restroom._id}`
+    link.textContent = 'View details'
+
+    box.append(name, address, link)
+    return box
+}
 
 async function addPins() {
     // 
