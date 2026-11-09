@@ -28,29 +28,29 @@
 }
 
 @font-face {
-  font-family: "Meridian";
-  src: url("/fonts/Meridian.woff2") format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
   font-family: "Fontier";
   src: url("/fonts/Fontier.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Tessera";
+  src: url("/fonts/Tessera.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 /* Use them */
 body {
-  font-family: "Meridian", sans-serif;
-  font-weight: 400;
+  font-family: "Beacon", sans-serif;
+  font-weight: 500;
 }
 
 h1, h2, h3 {
-  font-family: "Fontier", sans-serif;
+  font-family: "Tessera", sans-serif;
   font-weight: 700;
 }
-
 
 
 /* ---------- PAGE SETUP ----------- */
@@ -91,7 +91,6 @@ header {
 
 #logo {
     font-size: 26px;
-    font-weight: 800;
     color: var(--ink);
 }
 
