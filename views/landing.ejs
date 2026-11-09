@@ -4,29 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Got2Go</title>
 </head>
 
 <body>
     <header>
-        <a href="/" class="logo">Got2Go</a>
+        <a href="/" id="logo">Got2Go</a>
 
         <nav id="topNav">
             <a href="/restrooms/map">Map</a>
             <a href="/restrooms">Browse</a>
-            <a href="/login">Log In</a>
-            <a href="/signup">Sign Up</a>
+            <a href="/login" class="buttonS">Log In</a>
+            <a href="/signup" class="buttonP">Sign Up</a>
         </nav>
     </header>
     <main>
 
-        <section class="heroContainer">
-            <div class="">
+        <section id="heroContainer">
+            <div class="heroText">
                 <h1>Find a clean restroom, fast.</h1>
                 <p>A free, community-updated map of public restrooms near YOU.</p>
-                <div class="">
-                    <a href="/restrooms/map">Find a restroom</a>
-                    <a href="/restrooms">Browse the list</a>
+                <div class="heroButtons">
+                    <a href="/restrooms/map" class="buttonP">Find a restroom</a>
+                    <a href="/restrooms" class="buttonS">Browse the list</a>
                 </div>
                 <p>Now covering Boston, Newton, Waltham and Burlington</p>
             </div>
@@ -44,7 +45,7 @@
         </section>
 
         <section class="how">
-            <div clas="howContainer">
+            <div class="howContainer">
                 <h2 id="howTitle"> How it works.</h2>
                 <ol class="steps">
                     <li class="step">

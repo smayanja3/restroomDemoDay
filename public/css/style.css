@@ -1,0 +1,214 @@
+/* ============================================================
+   1. COLORS: Lightning + green.
+   ============================================================ */
+:root {
+    --page: #F4F6FB;
+    /* page background (soft off-white) */
+    --card: #FFFFFF;
+    /* header, cards, nav bar */
+    --ink: #1B1F33;
+    /* main text (dark navy, softer than black) */
+    --muted: #4A5068;
+    /* secondary text */
+    --green: #1A7F4B;
+    /* accent: buttons, links, pins */
+    --line: #C9CEDD;
+    /* borders */
+    --mapBg: #E3E8F3;
+    /* mini map background */
+    --street: #FFFFFF;
+    /* mini map streets */
+}
+
+
+
+/* ---------- PAGE SETUP ----------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'Atkinson Hyperlegible', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+h1,
+h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.1;
+}
+
+/* every link on page */
+a {
+    text-decoration: none;
+    /* color: black; */
+}
+
+/* ---------- NAV BAR/ HEADER----------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    background: var(--card);
+}
+
+#logo {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--ink);
+}
+
+/* have only for desktop bottom nav vissible on mobile */
+#topNav {
+    display: none;
+}
+
+/* 
+#topNav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+} */
+
+#topNav a {
+    padding:10px 14px;
+    color: var(--ink)
+}
+
+.buttonP,
+.buttonS {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.buttonP {
+    background: var(--green);
+    color: white;
+    border: 2px solid var(--line);
+}
+
+.buttonS {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--line);
+}
+
+/* button hover affect */
+
+/* ---------- HERO CONTAINER ----------- */
+
+#heroContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.heroText {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.heroText h1 {
+    font-size: 40px;
+}
+
+.heroText p {
+    color: var(--muted);
+}
+
+.heroButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ---------- MINI MAP: LINK  ----------- */
+
+
+
+
+/* ---------- HOW IT WORKS ----------- */
+.how {
+    background: var(--card);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 40px 18px;
+}
+
+.howContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#howTitle {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+.steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.step{
+    background: var(--page);
+    border-radius: 20px;
+    padding:24px;
+}
+
+.steps h3 {
+    font-size: 20px;
+    margin-bottom: 8px
+}
+
+.step p{
+    color: var(--muted);
+}
+
+/* ---------- FOOTER ----------- */
+
+footer{ 
+   padding: 32px 20px 80px;;
+   text-align: center;
+   font-size: 16px;
+   color: var(--muted);
+}
+
+/* ---------- BOTTOM NAV ----------- */
+
+#bottomNav{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display:flex;
+    justify-content: space-around;
+    background: var(--card);
+    border-top: 1px solid var(--line);
+}
+
+#bottomNav a{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    color: var(--muted);
+}
+
+
