@@ -29,19 +29,16 @@
                     <a href="/restrooms/map" class="buttonP">Find a restroom</a>
                     <a href="/restrooms" class="buttonS">Browse the list</a>
                 </div>
-                <p>Now covering Boston, Newton, Waltham and Burlington</p>
+                <!-- <p>Now covering Boston, Newton, Waltham and Burlington</p> -->
             </div>
-            <!-- setting up mini map on landing page wih zoomed in google maps -->
 
-            <a href="/restrooms/map" class="mapMini" aria-label="Open the restroom map">
-                <span class="street street1"></span>
-                <span class="street street2"></span>
-                <span class="street street3"></span>
-                <span class="pin pin1"></span>
-                <span class="pin pin2"></span>
-                <span class="pin pin3"></span>
-                <span class="mapMiniLabel">Open the map →</span>
-            </a>
+            <!-- setting up mini map on landing page wih zoomed in google maps -->
+            <div class="mapSide">
+                <div class="mapMini">
+                    <gmp-map center="42.3601,-71.0589" zoom="15" map-id="DEMO_MAP_ID"></gmp-map>
+                </div>
+                <a href="/restrooms/map" class="buttonS">Open the full map →</a>
+            </div>
         </section>
 
         <section class="how">
@@ -76,7 +73,8 @@
         <a href="/restrooms/map">Map</a>
         <a href="/restrooms">Browse</a>
     </nav>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps,marker" defer></script>
+    <script src="/js/map.js" defer></script>
 </body>
 
 </html>
