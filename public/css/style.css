@@ -14,10 +14,6 @@
     /* accent: buttons, links, pins */
     --line: #C9CEDD;
     /* borders */
-    --mapBg: #E3E8F3;
-    /* mini map background */
-    --street: #FFFFFF;
-    /* mini map streets */
 }
 
 @font-face {
