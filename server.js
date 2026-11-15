@@ -9,6 +9,9 @@ const connectDB = require('./config/database')
 const app = express()
 let PORT = process.env.PORT || 6030;
 
+// connect to MongoDb ======================================================================
+connectDB()
+
 // configure ======================================================================
 require('./config/passport')(passport) // pass passport for the config from passport.js
 
@@ -32,6 +35,7 @@ app.use(flash()) // flash messages stored in session
 // makes the logged in user available to ever view 
 app.use((req,res,next) => {
     res.locals.user = req.user || null
+    res.locals.path = req.path // now ever partial and view know is someone is logged in 
     next()
 })
 
@@ -41,17 +45,9 @@ app.use('/', require('./routes/auth'))
 app.use('/restrooms', require('./routes/restrooms'))
 app.use('/api', require('./routes/api'))
 
-// connect to MongoDb ======================================================================
-// only connects t
-connectDB().then(() => {
-    app.listen(PORT, () => {
+
+
+app.listen(PORT, () => {
     console.log(`Server is BURNING OIL on PORT ${PORT}`)
 })
-})
-
-
-
-// app.listen(PORT, () => {
-//     console.log(`Server is BURNING OIL on PORT ${PORT}`)
-// })
 

@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Got2Go</title>
-</head>
 
-<body>
-    <header>
-        <a href="/" id="logo">Got2Go</a>
-
-        <nav id="topNav">
-            <a href="/restrooms/map">Map</a>
-            <a href="/restrooms">Browse</a>
-            <a href="/login" class="buttonS">Log In</a>
-            <a href="/signup" class="buttonP">Sign Up</a>
-        </nav>
-    </header>
+<%- include('partials/head', { title: 'Got2Go: find a clean restroom, fast'}) %>
+<%- include('partials/nav') %>
     <main>
-
         <section id="heroContainer">
             <div class="heroText">
                 <h1>Find a clean restroom, fast.</h1>
@@ -64,15 +46,8 @@
         </section>
     </main>
 
-    <footer>
-        <div>Restroom location from Refuge Restrooms.</div>
-    </footer>
-
-    <nav id="bottomNav">
-        <a href="/">Home</a>
-        <a href="/restrooms/map">Map</a>
-        <a href="/restrooms">Browse</a>
-    </nav>
+    <%- include('partials/footer') %>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps,marker" defer></script>
     <script src="/js/map.js" defer></script>
 </body>
