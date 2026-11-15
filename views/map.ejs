@@ -1,11 +1,6 @@
 <html>
-
-<head>
-  <title>Add a Map using HTML</title>
-
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-
+<%- include('partials/head', { title: 'Got2Go: find a clean restroom, fast'}) %>
+<%- include('partials/nav') %>
 <body>
   <gmp-map center="42.3601,-71.0589" zoom="13" map-id="DEMO_MAP_ID" style="height: vh">
   </gmp-map>
@@ -22,6 +17,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps,marker"
     defer></script>
   <script src="/js/map.js" defer></script>
+   <%- include('partials/footer') %>
 </body>
 
 </html>

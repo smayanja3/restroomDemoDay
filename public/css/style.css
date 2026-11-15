@@ -74,6 +74,41 @@ a {
     text-decoration: none;
     /* color: black; */
 }
+/* ---------- LOGIN / SIGNUP ----------- */
+
+.authBox{
+    max-width: 450px;
+    margin: 49px auto;
+    padding: 0 20px 100px;
+}
+
+.authBox form{
+    display: flex;
+    flex-direction:column;
+    gap: 9px;
+    margin: 20px 0;
+}
+
+.authBox input{
+    padding: 14px;
+    font-size: 16px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+}
+
+.authBox button{
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.authMessage {
+    padding:12px;
+    border-radius: 12px;
+    background: #fdecee;
+    color: #8a1c2b
+}
+
+
 
 /* ---------- NAV BAR/ HEADER----------- */
 
