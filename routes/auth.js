@@ -6,8 +6,11 @@ const authController = require('../controllers/auth')
 // signup ==============================================
 
 router.get('/signup', authController.getSignup)
-router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
+router.post('/signup', (req,res,next) => {
+    console.log('signup:', req.body)
+    next()
+}, passport.authenticate('local-signup', {
+    successRedirect: '/restrooms/map',
     failureRedirect: '/signup',
     failureFlash: true,
 }))
@@ -16,7 +19,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 router.get('/login', authController.getLogin)
 router.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile',
+    successRedirect: '/restrooms/map',
     failureRedirect: '/login',
     failureFlash: true,
 }))

@@ -6,7 +6,7 @@
             <a href="/restrooms" class="<%= path === '/restrooms/' ? 'active' : '' %>">Browse</a>
             <% if (user) { %>
                 <span> Hi, <%= user.username %></span>
-                <a href="/logout" class="buttonS">Log In</a>
+                <a href="/logout" class="buttonS">Log Out</a>
            <% }else {%>
                 <a href="/login" class="buttonS">Log In</a>
                 <a href="/signup" class="buttonP">Sign Up</a>

@@ -76,7 +76,7 @@ module.exports = function (passport) {
                 }
 
                 // wrong password
-                if (!(awaituser.validPassword(password))) {
+                if (!(await user.validPassword(password))) {
                     // no error just wrong password
                     return done(null, false, req.flash('loginMessage', 'Wrong Password!!'))
                 }
