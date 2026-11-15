@@ -25,4 +25,4 @@ router.post('/login', passport.authenticate('local-login', {
 
 router.get('/logout', authController.getLogout)
 
-modules.exports = router
+module.exports = router
