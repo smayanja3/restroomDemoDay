@@ -1,0 +1,31 @@
+<%- include('partials/head', { title: 'Got2Go: find a clean restroom, fast' }) %>
+    <%- include('partials/nav') %>
+
+        <main class="authBox">
+            <h1>Sign up</h1>
+            <p>Create an account to start tracking what you watch</p>
+
+            <% if( message.length > 0) { %>
+                <p class="error">
+                    <%= message %>
+                </p>
+                <% } %>
+
+                    <form action="/signup" method="POST">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" placeholder="hello@example.com" required>
+                        <!-- have to make password type password so its not viable -->
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" minlength="8" placeholder="*************" required>
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="confirmPassword" id="confirmPassword" name="confirmPassword" minlength="8" placeholder="*************" required>
+                        <button type="submit">Register</button>
+                    </form>
+                    <p>Already have an account?<a href="/login"> Sign in</a></p>
+        </main>
+        <%- include('partials/footer') %>
+            </body>
+
+            </html>
