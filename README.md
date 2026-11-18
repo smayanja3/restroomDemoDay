@@ -2,7 +2,11 @@
  
 Find a clean, restroom nearby — fast.
  
-> 🚧 **Work in Progress:** This is an early demo-day build. Features are still being added, and things may change or break.
+> **Work in Progress:** This is an early demo-day build. Features are still being added, and things may change or break.
+
+## Preview
+![Got2Go](g2g.png)
+
 
 ## 📖 About
  
@@ -10,13 +14,13 @@ Restroom Finder helps people quickly locate public restrooms near them. The goal
  
 ---
  
-## ✅ Current Features
+## Current Features
  
 - Basic project setup and page layout
 - View a list of restrooms
 - Add a new restroom [update as you build]
 
-## 🗺️ Coming Soon
+## Coming Soon
  
 - Map view with nearby restrooms
 - Search by location
@@ -26,13 +30,13 @@ Restroom Finder helps people quickly locate public restrooms near them. The goal
 
 ---
  
-## 🛠️ Built With
+## Built With
  
 Node.js · Express · MongoDB · Mongoose · EJS 
  
 ---
  
-## 💡 What I'm Learning
+## What I'm Learning
  
 - Planning a project from the very first idea
 - Structuring an Express app so it's easy to grow
