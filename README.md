@@ -17,7 +17,7 @@ Got2Go is a free, community-updated map of public restrooms. Users can browse re
 
 ## ✅ Current Features
 
-- Landing page with a live mini map, built for phones and desktop
+- Landing page with a live mini map, built to be responsive on any device
 - Interactive Google map with a pin for every restroom
 - Pin popups that link to each restroom's details page
 - Real restroom data imported from the Refuge Restrooms API (Boston area)
