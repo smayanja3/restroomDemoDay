@@ -1,0 +1,194 @@
+/* ============================================================
+   GOT2GO INTRO: Boston's neighborhoods draw themselves as you scroll
+   Adapted from "Istanbul — GSAP ScrollTrigger" by Mert Cukuren (MIT License)
+   https://codepen.io/knyttneve/pen/zYrZwVo
+   ============================================================ */
+
+/* the intro's colors: black, gray outlines, your green */
+:root {
+    --introBg: #0B0F0D;
+    --introLine: rgba(255, 255, 255, 0.5);
+    --introGreen: #1A7F4B;        /* Downtown's fill: same green as the app */
+    --introGreenBright: #3DBE7A;  /* brighter green: readable on black */
+}
+
+/* no intro at all for reduced-motion users, or if GSAP didn't load */
+.noIntro .intro {
+    display: none;
+}
+
+/* hide the phone bottom nav while the intro is playing */
+.introActive #bottomNav {
+    display: none;
+}
+
+
+/* ---------- the black stage that gets pinned while you scroll ---------- */
+.introWrap {
+    position: relative;
+    height: 100vh;
+    background: var(--introBg);
+    overflow: hidden;
+}
+
+.introStage {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+
+/* ---------- the Boston map ---------- */
+.bostonMap {
+    width: 100%;
+    max-width: 900px;
+    max-height: 86vh;
+}
+
+.bostonMap path {
+    fill: transparent;
+    stroke: var(--introLine);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+}
+
+/* phones shrink the map, so the outlines need to be thicker to stay visible */
+@media (max-width: 767px) {
+    .bostonMap path {
+        stroke-width: 3;
+    }
+}
+
+
+/* ---------- "GOT2GO" letters over the map ---------- */
+.introWords {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 20px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.introText {
+    margin: 0;
+    font-size: clamp(56px, 14vw, 160px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.introText span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);    /* odd letters start low... */
+}
+
+.introText span:nth-child(even) {
+    transform: translateY(-40px);   /* ...even letters start high */
+}
+
+.introTag {
+    margin: 0;
+    font-size: clamp(17px, 2.2vw, 22px);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+
+/* ---------- the title you see before scrolling ---------- */
+.introTitle {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    text-align: center;
+    font-size: clamp(32px, 9vw, 96px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--introGreenBright);   /* the demo's red, now green */
+    pointer-events: none;             /* never blocks clicks on the page underneath */
+}
+
+.introTitle span {
+    display: block;
+}
+
+.introTitle span:first-child {
+    margin-bottom: 10px;
+    font-size: clamp(15px, 2.4vw, 26px);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ---------- "Scroll" hint at the bottom ---------- */
+.introScroll {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
+    pointer-events: none;
+}
+
+.introScroll svg {
+    width: 28px;
+    animation: introBounce 1s alternate infinite both;
+}
+
+@keyframes introBounce {
+    from { transform: translateY(-6px); }
+    to   { transform: translateY(6px); }
+}
+
+
+/* ---------- "Skip intro" button (only while the intro is on screen) ---------- */
+.introSkip {
+    display: none;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 6;
+    min-height: 44px;
+    align-items: center;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.introActive .introSkip {
+    display: inline-flex;
+}
+
+.introSkip:focus-visible {
+    outline: 3px solid var(--introGreenBright);
+    outline-offset: 3px;
+}
