@@ -38,7 +38,7 @@ module.exports = {
     show: async (req, res) => {
         try {
             const restroom = await Restroom.findById(req.params.id)
-            const reviews = await Review.find({post: req.params.id}).sort({ createdAt: "desc"}).lean()
+            const reviews = await Review.find({restroom: req.params.id}).sort({ createdAt: "desc"}).lean()
             if (!restroom) {
                 return res.redirect('/restrooms')
             }
