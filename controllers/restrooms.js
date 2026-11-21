@@ -1,4 +1,5 @@
 const Restroom = require('../models/restroom')
+const Review = require('../models/review')
 
 module.exports = {
     index: async (req, res) => {
@@ -37,10 +38,15 @@ module.exports = {
     show: async (req, res) => {
         try {
             const restroom = await Restroom.findById(req.params.id)
+            const reviews = await Review.find({post: req.params.id}).sort({ createdAt: "desc"}).lean()
             if (!restroom) {
                 return res.redirect('/restrooms')
             }
-            res.render('showOne', { restroom })
+            res.render('showOne', {
+                restroom: restroom,
+                user: req.user,
+                reviews: reviews,
+             });
         } catch (err) {
             console.log(err.message)
             res.redirect('/restrooms')

@@ -43,6 +43,7 @@ app.use((req,res,next) => {
 app.use('/', require('./routes/landing')) 
 app.use('/', require('./routes/auth'))
 app.use('/restrooms', require('./routes/restrooms'))
+app.use('/reviews', require('./routes/reviews'))
 app.use('/api', require('./routes/api'))
 
 
