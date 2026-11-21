@@ -11,6 +11,27 @@
         </p>
         <p>Hours: <%= restroom.is24Hours ? 'Open 24 hours' : restroom.hours %>
         </p>
+    
+    <div class="mt-5">
+            <h2>Add a Review</h2>
+        <form action="/review/createReview/<%= restroom._id %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+
+                <label for="review" class="form-label">Review</label>
+                <input type="text" class="form-control" id="comment" name="review">
+            </div>
+            <button type="submit" class="btn btn-primary">Review</button>
+        </form>
+    </div>
+
+        <ul>
+            <p>Reviews show up here</p>
+            <% for(let i = 0; i < reviews.length; i ++) { %>
+            <li class="col-6 justify-content-between mt-5">
+            <%= reviews[i].review %>
+            </li>
+        <% } %>
+        </ul>
         <a href="/restrooms/edit/<%= restroom._id %>">Edit</a>
         <button type="button" id="danger" data-id="<%= restroom._id %>">Delete</button>
     </main>

@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const ReviewSchema = new mongoose.Schema({
-    // reviewBy: {
-    //     type: PostSchema.user,
-    //     ref:'User'
-    // },
     review: {
         type: String,
         required: true,
@@ -24,6 +20,10 @@ const ReviewSchema = new mongoose.Schema({
     restroom: { // <--- what its attached too
         type: mongoose.Schema.Types.ObjectId,
         ref: 'restroom', // <- refernce another module
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'User', required: true
     },
     createdAt: {
         type: Date,
