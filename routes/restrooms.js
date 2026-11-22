@@ -3,6 +3,7 @@ const router = express.Router()
 const Restroom = require('../models/restroom')
 //--- allows restrooms to exisit in the routes file -> from controllers file
 const restrooms = require('../controllers/restrooms')
+const { isLoggedIn } = require("../middleware/auth");
 
 // GET =================================
 //--- all restrooms 
@@ -10,7 +11,7 @@ router.get('/', restrooms.index)
 //---- hide api key from view 
 router.get('/map', restrooms.map)
 //------ filled out form
-router.get('/edit/:id', restrooms.editForm)
+router.get('/edit/:id', isLoggedIn, restrooms.editForm)
 //---- one restroom page
 router.get('/:id', restrooms.show)
 
@@ -18,7 +19,7 @@ router.get('/:id', restrooms.show)
 
 // PUT =================================
 //--- edited Run
-router.put('/:id', restrooms.update)
+router.put('/:id', isLoggedIn, restrooms.update)
 
 // DELETE ==============================
 //router.delete('/:id', restrooms.destroy)
