@@ -7,7 +7,7 @@ const { isLoggedIn } = require("../middleware/auth");
 
 //router.post("/createReview/:id", reviewsController.createReview);
 
-router.post("/createPost/:id", isLoggedIn, upload.single("file"), reviewsController.createReview);
+router.post("/createReview/:id", isLoggedIn, upload.single("file"), reviewsController.createReview);
 
 //router.put("/likeReview/:id", commentsController.likeReview);
 
