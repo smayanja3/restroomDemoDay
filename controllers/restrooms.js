@@ -68,7 +68,15 @@ module.exports = {
     update: async (req, res) => {
         try {
             console.log('Put to body:', req.body)
-            await Restroom.findByIdAndUpdate(req.params.id, req.body, { runValidators: true })
+            //destructuring - same as Promise.all (pulls out the alues i want)
+            const { isFree, is24Hours, hours, babyChanging } = req.body
+            
+            await Restroom.findByIdAndUpdate(
+                req.params.id,
+                { isFree, is24Hours, hours, babyChanging },
+                { runValidators: true }
+            )
+
             res.json({ message: 'Updated' })
         } catch (err) {
             console.log(err.message)

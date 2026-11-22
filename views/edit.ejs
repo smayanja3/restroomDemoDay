@@ -1,19 +1,11 @@
 <%- include('partials/head', { title: 'Got2Go: find a clean restroom, fast'}) %>
 <%- include('partials/nav') %>
 <main>
-     <h1>Add a Restroom</h1>
 
    <form id="editF" data-id="<%= restroom._id %>">
 
-        <p>
-            <label for="name">Location Name</label>
-            <input type="text" id="name" name="name" value="<%= restroom.name %>" required>
-        </p>
-
-        <p>
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address" value="<%= restroom.address %>" required>
-        </p>
+        <h1>Edit <%= restroom.name %></h1>
+        <p><%= restroom.address %></p>
 
         <p>
             <label for="hours">Hours (if not 24 hours)</label>
@@ -27,12 +19,16 @@
         <p>
             <label><input type="checkbox"  id="is24Hours" name="is24Hours" <%= restroom.is24Hours ? 'checked' : '' %>>Open 24 hours</label>
         </p>
+
+        <p>
+            <label><input type="checkbox"  id="babyChanging" name="babyChanging" <%= restroom.babyChanging ? 'checked' : '' %>>Baby changing table</label>
+        </p>
         <button type="submit">Save Changes</button>
         <a href="/restrooms/<%= restroom._id %>">Cancel</a>
     </form>
     </main>
     <%- include('partials/footer') %>
+    <script src="/js/main.js"></script>
 </body>
-<script src="/js/main.js"></script>
 
 </html>
