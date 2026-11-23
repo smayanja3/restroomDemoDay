@@ -9,14 +9,17 @@ module.exports = {
             if(req.file){
                 //Upload image to cloudinary
             const result = await cloudinary.uploader.upload(req.file.path);
-            image = result.secure.url
+            console.log('file from multer:', req.file)
+console.log('cloudinary result:', result) 
+            image = result.secure_url
             cloudinaryId = result.public_id
             }
             
             console.log('Request body,', req.body)
 
             await Review.create({
-                review: req.body.review || undefined,
+                review: req.body.review, //only || undefined if optional
+                rating: req.body.rating,
                 image,
                 cloudinaryId,
                 likes: 0,

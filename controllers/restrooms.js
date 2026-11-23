@@ -38,13 +38,19 @@ module.exports = {
     show: async (req, res) => {
         try {
             const restroom = await Restroom.findById(req.params.id)
-            const reviews = await Review.find({restroom: req.params.id}).sort({ createdAt: "desc"}).lean()
-            if (!restroom) {
+             if (!restroom) {
                 return res.redirect('/restrooms')
             }
+            const reviews = await Review.find({restroom: req.params.id})
+            .populate('author', 'username') // only pulls out username our of author = user._id
+            .sort({ createdAt: "desc"}).lean()
+            
+            //gallery of all the images from users review
+            const photos = reviews.filter(review => review.image)
+
             res.render('showOne', {
                 restroom: restroom,
-                user: req.user,
+                photos: photos,
                 reviews: reviews,
              });
         } catch (err) {

@@ -11,6 +11,25 @@
         </p>
         <p>Hours: <%= restroom.is24Hours ? 'Open 24 hours' : restroom.hours %>
         </p>
+    <!-- photos gallery -->
+     <section>
+        <h2>Photos</h2>
+
+       <% if(photos.length === 0){ %>
+            <p>No photos yet. Add one with your review!</p>
+       <% } else { %>
+            <ul>
+                <% photos.forEach( photo => { %>
+                    <li>
+                        <img src="<%= photo.image %>" alt="Photo of <%= restroom.name %>">
+                        <!-- give photo credits maybe -->
+                    </li>
+               <% }) %>
+            </ul>
+        <% } %>
+     </section>
+
+
     <!-- add a review -->
     <section>
          <h2>Add a Review</h2>
@@ -46,16 +65,41 @@
 
 
     <!-- review card: need to complete next -->
+    <section>
+        <h2>Reviews</h2>
+    
+          <%  if(reviews.length === 0){ %>
+                <p>No reviews yet. Be the first!</p>
+           <% } %>
         <ul>
-            <p>Reviews show up here</p>
-            <% for(let i = 0; i < reviews.length; i ++) { %>
-            <li class="col-6 justify-content-between mt-5">
-            <%= reviews[i].review %>
-            </li>
-        <% } %>
+            <% reviews.forEach(review => { %>
+                <li>
+                    <!-- shows the user for each review -->
+                    <p><%= review.author ? review.author.username : 'A User' %></p>
+                    <!-- rating -->
+                   <% if(review.rating){ %>
+                        <p>Rating: <%= review.rating %> / 5</p>
+                   <% } %>
+
+                   <!-- comment -->
+                    <p><%= review.review %></p>
+
+                    <!-- image -->
+                    <% if(review.image){ %>
+                        <img src="<%= review.image %>" alt="Photo of <%= restroom.name %> from a review" width="100">  
+                   <% } %>
+                   <!-- LIKES: NEED TO ADD LOGIC -->
+                    <p>Likes: <%= review.likes %></p>
+
+                    <!-- ONLY users can submit review -->
+                </li>
+           <% }) %>
         </ul>
+
         <a href="/restrooms/edit/<%= restroom._id %>">Edit</a>
         <button type="button" id="danger" data-id="<%= restroom._id %>">Delete</button>
+        
+    </section>
     </main>
       <%- include('partials/footer') %>
 </body>
