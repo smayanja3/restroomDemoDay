@@ -6,15 +6,14 @@ module.exports = {
         try {
             let image = null
             let cloudinaryId = null
-            if(req.file){
+            if (req.file) {
                 //Upload image to cloudinary
-            const result = await cloudinary.uploader.upload(req.file.path);
-            console.log('file from multer:', req.file)
-console.log('cloudinary result:', result) 
-            image = result.secure_url
-            cloudinaryId = result.public_id
+                //converts phone img HEIC to jpg
+                const result = await cloudinary.uploader.upload(req.file.path, { format: 'jpg'});
+                image = result.secure_url
+                cloudinaryId = result.public_id
             }
-            
+
             console.log('Request body,', req.body)
 
             await Review.create({
@@ -27,9 +26,11 @@ console.log('cloudinary result:', result)
                 author: req.user._id
             });
             console.log("Thanks for the Review!");
+            req.flash('reviewMessage', 'Thanks for your review!')
             res.redirect(`/restrooms/${req.params.id}`); // <--- maybe need comma
         } catch (err) {
             console.log(err)
+            req.flash('reviewMessage', 'Sorry, your review could not be saved. Please try again.')
             res.redirect(`/restrooms/${req.params.id}`);
         }
     },
