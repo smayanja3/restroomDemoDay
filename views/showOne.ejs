@@ -11,19 +11,41 @@
         </p>
         <p>Hours: <%= restroom.is24Hours ? 'Open 24 hours' : restroom.hours %>
         </p>
-    
-    <div class="mt-5">
-            <h2>Add a Review</h2>
+    <!-- add a review -->
+    <section>
+         <h2>Add a Review</h2>
+         <% if (user) { %>
         <form action="/review/createReview/<%= restroom._id %>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
+                <label for="review" class="form-label">Your review</label>
+                <input type="text" class="form-control" id="review" name="review" required>
+            </div>
 
-                <label for="review" class="form-label">Review</label>
-                <input type="text" class="form-control" id="comment" name="review">
+            <div>
+              <label for="rating" class="form-label">Rating</label>
+                    <select name="rating" id="rating">
+                        <option value="">Choose a rating</option>
+                        <option value="5">5 Excellent</option>
+                        <option value="4">4 Good</option>
+                        <option value="3">3 Okay</option>
+                        <option value="2">2 Poor</option>
+                        <option value="1">1 Avoid</option>
+                    </select>
+            </div>
+
+             <div class="mb-3">
+                <label for="imgUpload" class="form-label">Photo (optional)</label>
+                <input type="file" class="form-control" id="imageUpload" name="file" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Review</button>
         </form>
-    </div>
+  <%  } else{ %>
+    <p><a href="/login">Log in</a>to leave a review</p>
+    <% } %>
+  </section>
 
+
+    <!-- review card: need to complete next -->
         <ul>
             <p>Reviews show up here</p>
             <% for(let i = 0; i < reviews.length; i ++) { %>

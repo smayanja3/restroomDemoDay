@@ -16,7 +16,7 @@ module.exports = {
             console.log('Request body,', req.body)
 
             await Review.create({
-                review: req.body.review,
+                review: req.body.review || undefined,
                 image,
                 cloudinaryId,
                 likes: 0,

@@ -3,15 +3,23 @@ const mongoose = require('mongoose')
 const ReviewSchema = new mongoose.Schema({
     review: {
         type: String,
-        required: true,
+        required: [true, 'Please write a review'],
+        trim: true,
+        maxLength: [500, 'Review can be up to 500 characters']
     },
+    // optional not required
     image: {
         type: String,
-        require: true,
     },
     cloudinaryId: {
         type: String,
-        require: true,
+    },
+    //mongoose turns dropdown '4' into number
+    rating: {
+        type: Number,
+        min: [1, 'Rating must be 1 to 5'],
+        max: [5, 'Rating must be 1 to 5'],
+        required: true
     },
     likes: {
         type: Number,
@@ -19,7 +27,7 @@ const ReviewSchema = new mongoose.Schema({
     },
     restroom: { // <--- what its attached too
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'restroom', // <- refernce another module
+        ref: 'Restroom', // <- refernce another module
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
