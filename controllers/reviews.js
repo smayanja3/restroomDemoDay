@@ -26,11 +26,9 @@ module.exports = {
                 author: req.user._id
             });
             console.log("Thanks for the Review!");
-            req.flash('reviewMessage', 'Thanks for your review!')
             res.redirect(`/restrooms/${req.params.id}`); // <--- maybe need comma
         } catch (err) {
             console.log(err)
-            req.flash('reviewMessage', 'Sorry, your review could not be saved. Please try again.')
             res.redirect(`/restrooms/${req.params.id}`);
         }
     },
