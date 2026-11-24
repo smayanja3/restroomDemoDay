@@ -25,6 +25,7 @@
                     <gmp-map center="42.3601,-71.0589" zoom="15" map-id="DEMO_MAP_ID"></gmp-map>
                 </div>
                 <a href="/restrooms/map" class="buttonS">Open the full map →</a>
+                <button type="button" id="userLocation">Use My Location</button>
             </div>
         </section>
 
@@ -56,6 +57,7 @@
     
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&libraries=maps,marker" defer></script>
     <script src="/js/map.js" defer></script>
+     <script src="/js/main.js"></script>
 
     <!-- for intro map design -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

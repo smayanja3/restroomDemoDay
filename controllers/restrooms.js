@@ -16,12 +16,15 @@ module.exports = {
     // newForm: (req, res) => {
     //     res.render('new')
     // },
-// no async because this map doesnt talk to the mongoDB the db same as newForm ^^^
-// add boston as home location figure out in map.js or else where....
+    // no async because this map doesnt talk to the mongoDB the db same as newForm ^^^
+    // add boston as home location figure out in map.js or else where....
     map: (req, res) => {
-         res.render('map', {apiKey: process.env.GOOGLE_MAPS_API_KEY})
+        res.render('map', { apiKey: process.env.GOOGLE_MAPS_API_KEY })
     },
-
+    //users location
+    userLocation: (req, res) => {
+        //sort restrooms by location
+    },
     editForm: async (req, res) => {
         try {
             const restroom = await Restroom.findById(req.params.id)
@@ -38,13 +41,13 @@ module.exports = {
     show: async (req, res) => {
         try {
             const restroom = await Restroom.findById(req.params.id)
-             if (!restroom) {
+            if (!restroom) {
                 return res.redirect('/restrooms')
             }
-            const reviews = await Review.find({restroom: req.params.id})
-            .populate('author', 'username') // only pulls out username our of author = user._id
-            .sort({ createdAt: "desc"}).lean()
-            
+            const reviews = await Review.find({ restroom: req.params.id })
+                .populate('author', 'username') // only pulls out username our of author = user._id
+                .sort({ createdAt: "desc" }).lean()
+
             //gallery of all the images from users review
             const photos = reviews.filter(review => review.image)
 
@@ -52,7 +55,7 @@ module.exports = {
                 restroom: restroom,
                 photos: photos,
                 reviews: reviews,
-             });
+            });
         } catch (err) {
             console.log(err.message)
             res.redirect('/restrooms')
@@ -76,7 +79,7 @@ module.exports = {
             console.log('Put to body:', req.body)
             //destructuring - same as Promise.all (pulls out the alues i want)
             const { isFree, is24Hours, hours, babyChanging } = req.body
-            
+
             await Restroom.findByIdAndUpdate(
                 req.params.id,
                 { isFree, is24Hours, hours, babyChanging },

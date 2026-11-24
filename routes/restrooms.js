@@ -10,6 +10,8 @@ const { isLoggedIn } = require("../middleware/auth");
 router.get('/', restrooms.index)
 //---- hide api key from view 
 router.get('/map', restrooms.map)
+//---- user location
+router.get('/userLocation', restrooms.userLocation)
 //------ filled out form
 router.get('/edit/:id', isLoggedIn, restrooms.editForm)
 //---- one restroom page
