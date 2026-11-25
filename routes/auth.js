@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const authController = require('../controllers/auth')
-const { ensureGuest } = require("../middleware/auth");
+const { isLoggedIn ,ensureGuest } = require("../middleware/auth");
 
 
 // signup ==============================================
@@ -23,6 +23,10 @@ router.post('/login', passport.authenticate('local-login', {
     failureRedirect: '/login',
     failureFlash: true,
 }))
+
+// profile ===============================================
+
+router.get('/profile',isLoggedIn, authController.getProfile)
 
 // logout ===============================================
 

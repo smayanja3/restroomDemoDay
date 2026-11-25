@@ -4,6 +4,7 @@
         <nav id="topNav">
             <a href="/restrooms/map" class="<%= path === '/restrooms/map' ? 'active' : '' %>">Map</a>
             <a href="/restrooms" class="<%= path === '/restrooms/' ? 'active' : '' %>">Browse</a>
+            <a href="/profile" class="<%= path === '/' ? 'active' : '' %>">Profile</a>
             <% if (user) { %>
                 <span> Hi, <%= user.username %></span>
                 <a href="/logout" class="buttonS">Log Out</a>
