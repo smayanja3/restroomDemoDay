@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
+const methodOverride = require("method-override");
 const passport = require('passport')
 const flash = require('connect-flash')
 const connectDB = require('./config/database')
@@ -21,6 +22,9 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.locals.apiKey = process.env.GOOGLE_MAPS_API_KEY
+
+//Use forms for put / delete
+app.use(methodOverride("_method"));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,

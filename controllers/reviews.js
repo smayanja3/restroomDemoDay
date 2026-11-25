@@ -32,4 +32,11 @@ module.exports = {
             res.redirect(`/restrooms/${req.params.id}`);
         }
     },
+
+    // deleteReview: async () => {
+    //     try{
+    //         //const review = await Review.findById
+    //     }
+
+    // },
 };

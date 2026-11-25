@@ -9,6 +9,6 @@ router.post("/createReview/:id", isLoggedIn, upload.single('file'), reviewsContr
 
 //router.put("/likeReview/:id", commentsController.likeReview);
 
-//router.delete("/deleteReview/:id", commentsController.deletePost);
+router.delete("/deleteReview/:id",isLoggedIn, reviewsController.deleteReview);
 
 module.exports = router;

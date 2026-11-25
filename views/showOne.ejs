@@ -4,7 +4,7 @@
         <h1>
             <%= restroom.name %>
         </h1>
-        <p>Adress: <%= restroom.address %>
+        <p>Address: <%= restroom.address %>
         </p>
         <a href="<%= restroom.mapsUrl %>" target="_blank">Get directions</a>
         <p>Free: <%= restroom.isFree ? 'Yes' : 'No' %>
@@ -53,13 +53,13 @@
             </div>
 
              <div class="mb-3">
-                <label for="imgUpload" class="form-label">Photo (optional)</label>
+                <label for="imageUpload" class="form-label">Photo (optional)</label>
                 <input type="file" class="form-control" id="imageUpload" name="file" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Review</button>
         </form>
   <%  } else{ %>
-    <p><a href="/login">Log in</a>to leave a review</p>
+    <p><a href="/login">Log in</a> to leave a review</p>
     <% } %>
   </section>
 
@@ -91,18 +91,21 @@
                    <!-- LIKES: NEED TO ADD LOGIC -->
                     <p>Likes: <%= review.likes %></p>
 
-                    <!-- ONLY users can submit review -->
+                    <!-- ONLY author of review can delete review -->
+                    <% if(user && review.author?._id.toString() === user._id.toString()){
+                        <button type="submit">Delete Review</button>
+                   <% } %>
+
                 </li>
            <% }) %>
         </ul>
 
         <a href="/restrooms/edit/<%= restroom._id %>">Edit</a>
-        <button type="button" id="danger" data-id="<%= restroom._id %>">Delete</button>
         
     </section>
     </main>
       <%- include('partials/footer') %>
+      <script src="/js/main.js"></script>
 </body>
-<script src="/js/main.js"></script>
 
 </html>
