@@ -11,6 +11,18 @@
         </p>
         <p>Hours: <%= restroom.is24Hours ? 'Open 24 hours' : restroom.hours %>
         </p>
+    <!-- average ratings  toFixed(1) shows one decimal place fo 4.334 = 4.3-->
+        <p>
+            <!-- only how if rating >= 1 -->
+           <% if(restroom.ratingCount){ %>
+            <!-- checks the decimal plce -->
+                Ratings: <%= restroom.avgRating.toFixed(1) %> / 5
+                <!-- how many rating are we comparing -->
+                (<%= restroom.ratingCount %> <%= restroom.ratingCount === 1 ? 'rating' : 'ratings' %>)
+          <%  } else { %>
+            No ratings yet.
+           <% } %>
+        </p>
     <!-- photos gallery -->
      <section>
         <h2>Photos</h2>

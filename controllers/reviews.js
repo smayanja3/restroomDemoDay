@@ -1,5 +1,18 @@
 const cloudinary = require("../middleware/cloudinary");
 const Review = require('../models/review')
+const Restroom = require('../models/restroom')
+
+// avergae calculation
+async function updateRating(restroomId){
+    // only grab reviews that have a rating $ne = skip reviews ith no ratings
+    const rated = await Review.find({ restroom: restroomId, rating: {$ne: null} }) 
+
+    const ratingCount = rated.length
+    const total = rated.reduce((sum, review) => sum + Number(review.rating), 0)
+    const avgRating = (total / ratingCount) || 0 
+    
+    await Restroom.findByIdAndUpdate(restroomId, { avgRating, ratingCount})
+}
 
 module.exports = {
     createReview: async (req, res) => {
@@ -25,6 +38,9 @@ module.exports = {
                 restroom: req.params.id,
                 author: req.user._id
             });
+            // needed to get average ratngs need to call it after creating and deleting
+            await updateRating(req.params.id)
+
             console.log("Thanks for the Review!");
             res.redirect(`/restrooms/${req.params.id}`); // <--- maybe need comma
         } catch (err) {
@@ -50,7 +66,9 @@ module.exports = {
                 await cloudinary.uploader.destroy(review.cloudinaryId)
             }
             await review.deleteOne()
+            // needed to get average ratngs need to call it after creating and deleting
             await updateRating(review.restroom)
+
             res.redirect(`/restrooms/${review.restroom}`)
         } catch (err) {
             console.log(err)
