@@ -20,6 +20,9 @@ const restroomSchema = new mongoose.Schema({
     lat: { type: Number },
     lng: { type: Number },
     externalId: { type: Number, unique: true, sparse: true }, // id from Refudge API
+    // needed for individual ratings
+    avgRating:{ type: Number,default: 0 },
+    ratingCount: { type: Number, default: 0 }
 },
     { timestamps: true })
 

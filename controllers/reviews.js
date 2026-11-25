@@ -33,10 +33,29 @@ module.exports = {
         }
     },
 
-    // deleteReview: async () => {
-    //     try{
-    //         //const review = await Review.findById
-    //     }
+    deleteReview: async (req, res) => {
+        try{
+            const review = await Review.findById(req.params.id)
 
-    // },
+            //review gone send back to browser list
+            if(!review){
+                return res.redirect('/restrooms')
+            }
+            // only the author can delte their own comments
+            if(review.author.toString() !== req.user._id.toString()){
+                return res.redirect(`/restrooms/${review.restroom}`)
+            }
+            //delete the cloudinary photo which removes from gallery also
+            if(review.cloudinaryId){
+                await cloudinary.uploader.destroy(review.cloudinaryId)
+            }
+            await review.deleteOne()
+            await updateRating(review.restroom)
+            res.redirect(`/restrooms/${review.restroom}`)
+        } catch (err) {
+            console.log(err)
+            res.redirect('/restrooms')
+        }
+
+    },
 };

@@ -92,8 +92,10 @@
                     <p>Likes: <%= review.likes %></p>
 
                     <!-- ONLY author of review can delete review -->
-                    <% if(user && review.author?._id.toString() === user._id.toString()){
+                    <% if(user && review.author?._id.toString() === user._id.toString()){ %>
+                       <form action="/review/deleteReview/<%= review._id %>?_method=DELETE" method="POST">
                         <button type="submit">Delete Review</button>
+                       </form>
                    <% } %>
 
                 </li>

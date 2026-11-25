@@ -20,11 +20,11 @@ require('./config/passport')(passport) // pass passport for the config from pass
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
+//Use forms for put / delete
+app.use(methodOverride("_method"));
 app.use(express.json())
 app.locals.apiKey = process.env.GOOGLE_MAPS_API_KEY
 
-//Use forms for put / delete
-app.use(methodOverride("_method"));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
